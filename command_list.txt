@@ -1,0 +1,7 @@
+vlan 10
+vlan 20
+vlan 30
+vlan 40
+vlan 50
+vlan 60
+vlan 70
