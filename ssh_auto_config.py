@@ -10,7 +10,7 @@
 """
 import json
 import re
-
+import configparser
 from loguru import logger
 from netmiko import ConnectHandler, NetmikoAuthenticationException, NetmikoTimeoutException
 
@@ -65,11 +65,11 @@ def user_passwd() -> list:
     :return: 账号密码
     """
     try:
-        with open("user_pass.json", "r") as us_pa:
-            user_pass = json.load(us_pa)
-            user = user_pass["user"]
-            passwd = user_pass["password"]
-            return [user, passwd]
+        users_file = configparser.ConfigParser()
+        users_file.read("user_pass.ini")
+        user = users_file.get("users", "user")
+        passwd = users_file.get("users", "password")
+        return [user, passwd]
     except Exception as f:
         logger.error(f)
 
