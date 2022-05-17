@@ -1,3 +1,2 @@
 ﻿loguru==0.5.3
 netmiko==3.4.0
-loguru==0.5.3
